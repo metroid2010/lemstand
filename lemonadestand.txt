@@ -1,0 +1,186 @@
+/*------------------------------------------------------------------
+--
+--      LEMONADE STAND
+--
+--   Rip off of the famous Apple II game.
+--   Programmed in C by R
+--
+--  Started by 8, feb, 2016
+--
+--
+-- DISCLAIMER: not to be distributed comercially.
+-- Only for educational purposes.
+-- WARNING: this is still a preview of what is to come.
+-- Official releases will be notified when ready.
+-- Still, this WIP can be shared freely under the GNU free 
+-- software licenses. Feel free to modify the code, add new
+-- features, and most important of all, enjoy and learn.
+---------------------------------------------------------------------*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <unistd.h>
+
+
+
+/*--------------------------------------------------------------------*/
+/*----------------------------
+--  Function to clear the
+--  screen
+------------------------------*/
+void clearScreen()
+{  const char* CLEAR_SCREE_ANSI = "\e[1;1H\e[2J";
+  write(STDOUT_FILENO,CLEAR_SCREE_ANSI,12); }
+
+/*--------------------------------------------------------------------*/
+
+/*----------------------------
+--  Functions for the difficulty
+--  Sets the percentages for
+--  the weather
+------------------------------*/
+int storm, hot, sunny, cloudy;
+void setdiffeasy()
+{
+    storm=5;
+    hot=20;
+    sunny=60;
+    cloudy=15;
+}
+void setdiffhard()
+{
+    storm=30;
+    hot=10;
+    sunny=20;
+    cloudy=40;
+}
+void setdiffmedium()
+{
+    storm=10;
+    hot=20;
+    sunny=50;
+    cloudy=20;
+}
+
+
+/*--------------------------------------------------------------------*/
+
+
+void mainmenu ()
+{
+
+    int slct1; //main menu selection
+
+    clearScreen();
+    printf("\n\t   ---Welcome to LEMONADE STAND--- ");
+    printf("\n\tA C version of the original game from the Apple II.");
+    printf("\n\tProgrammed by R\n");
+    printf("\n\t1- Start a new game\n\t2- HELP and how to play\n\t3- Options\n\t");
+    scanf("%d",&slct1); //menu entry selection
+
+
+/*-------------------------------------------------------------------------
+--
+--      Now, for the menu entries, with the
+--  three entries: options, help, and start game.
+--
+--      Using int variable slct1 for the switch statement...
+--
+--
+---------------------------------------------------------------------------*/
+
+    switch(slct1)
+    {
+        case 2:
+            clearScreen();
+            printf("\n\t   ---HELP SCREEN---\n\t WIP");
+            printf("\n\t This is the WIP help screen of the game LEMONADE STAND, designed by Apple sometime in the late 70s, rewritten as a C game by Robert.\n\t  Thank you for your interest in my work. Hope you enjoy it.");
+            printf("\n\n\nPress ENTER to get back to main menu");
+            getchar();
+            getchar();
+        break;
+
+
+        case 1:
+
+            gamestart();
+            break;
+
+        case 3:
+            clearScreen();
+            printf("\n\t   ---OPTIONS---\n\t WIP");
+            printf("\n\tThis is still WIP.");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+//            printf("\n\t");
+        printf("\nPress 'Enter' to continue: ... \n\n");
+        getchar();
+        getchar();
+        break;
+
+
+        default:
+            printf("Please, make a valid selection\n");
+
+    }
+
+
+}
+
+int main()
+{
+    mainmenu();
+}
+
+/*-----------------------------------------------------------------------------
+--
+--          Now starts the real fun.
+--
+--
+--
+-------------------------------------------------------------------------------*/
+
+int gamestart()
+{
+    clearScreen();
+    printf("\n\t Press ENTER to start the game.\n\tEnjoy and have fun!");
+    getchar();
+    getchar();
+    weather();
+}
+int weather()
+{
+
+    srand(time(NULL));
+    int whr = rand();
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+    printf("");
+}
+
+
+
