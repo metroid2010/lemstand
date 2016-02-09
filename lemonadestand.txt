@@ -94,22 +94,22 @@ void mainmenu ()
 
     switch(slct1)
     {
-        case 2:
+        case 2: //HELP SCREEN
             clearScreen();
             printf("\n\t   ---HELP SCREEN---\n\t WIP");
-            printf("\n\t This is the WIP help screen of the game LEMONADE STAND, designed by Apple sometime in the late 70s, rewritten as a C game by Robert.\n\t  Thank you for your interest in my work. Hope you enjoy it.");
+            printf("\n\t This is the WIP help screen of the game LEMONADE STAND, designed by Apple sometime in the late 70s, rewritten as a C game");
             printf("\n\n\nPress ENTER to get back to main menu");
             getchar();
             getchar();
         break;
 
 
-        case 1:
+        case 1: //GAME START
 
             gamestart();
             break;
 
-        case 3:
+        case 3: //OPTIONS
             clearScreen();
             printf("\n\t   ---OPTIONS---\n\t WIP");
             printf("\n\tThis is still WIP.");
