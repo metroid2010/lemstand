@@ -12,9 +12,12 @@
 -- Only for educational purposes.
 -- WARNING: this is still a preview of what is to come.
 -- Official releases will be notified when ready.
--- Still, this WIP can be shared freely under the GNU free 
+-- Still, this WIP can be shared freely under the GNU free
 -- software licenses. Feel free to modify the code, add new
 -- features, and most important of all, enjoy and learn.
+--
+-- NOTE: Linux version
+--
 ---------------------------------------------------------------------*/
 
 
@@ -46,27 +49,37 @@ int storm, hot, sunny, cloudy;
 void setdiffeasy()
 {
     storm=5;
-    hot=20;
-    sunny=60;
-    cloudy=15;
+    hot=20+storm;
+    sunny=60+hot;
+    cloudy=15+cloudy;
 }
 void setdiffhard()
 {
     storm=30;
-    hot=10;
-    sunny=20;
-    cloudy=40;
+    hot=10+storm;
+    sunny=20+hot;
+    cloudy=40+cloudy;
 }
 void setdiffmedium()
 {
     storm=10;
-    hot=20;
-    sunny=50;
-    cloudy=20;
+    hot=20+storm;
+    sunny=50+hot;
+    cloudy=20+sunny;
 }
 
+void feedrdm()
+{
+    srand(time(NULL)); //stackoverflow folks say this is needed for the random function
+}
+/*--------------------------------------------------------------------
+--
+--  THE PROGRAM STARTS HERE
+--
+----------------------------------------------------------------------*/
 
-/*--------------------------------------------------------------------*/
+
+
 
 
 void mainmenu ()
@@ -110,21 +123,60 @@ void mainmenu ()
             break;
 
         case 3: //OPTIONS
+            
             clearScreen();
-            printf("\n\t   ---OPTIONS---\n\t WIP");
-            printf("\n\tThis is still WIP.");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
-//            printf("\n\t");
+            printf("\n\t   ---OPTIONS---");
+            printf("\n\tRemember this is still a preliminary version!");
+            printf("\n\t");
+            printf("\n\tHere you can change level of difficulty:");
+            printf("\n\t  1- Easy");
+            printf("\n\t  2- Medium (default)");
+            printf("\n\t  3- Hard");
+            printf("\n");
+            printf("\n\t  4- Go back to main menu");
+            printf("\n\t Select: ");
+            scanf("%d",&opts1);
+
+            //the difficulty is set by calling the functions stated back at the start of the program
+            switch (opts1)
+            {
+                case 1:
+
+                setdiffeasy();
+                printf("\n\n\tThe difficulty was set to Easy\n");
+                break;
+
+                case 2:
+
+                setdiffmedium();
+                printf("\n\n\tThe difficulty was set to Medium\n");
+                break;
+
+                case 3:
+
+                setdiffhard();
+                printf("\n\n\tThe difficulty was set to Hard\n");
+                break;
+
+                case 4:
+
+                printf("\n\n\tPress Enter to go back to Main Menu...\n");
+                getchar();
+                getchar();
+                mainmenu();
+                break;
+
+                default:
+                printf("\n\n\tOption '%d' not recognised, try again\n",opts1); //STILL NO FUNCTIONAL 'TRY AGAIN'!
+                return (0);
+                break;
+                }
+
+
         printf("\nPress 'Enter' to continue: ... \n\n");
         getchar();
         getchar();
+        mainmenu();
         break;
 
 
@@ -136,20 +188,22 @@ void mainmenu ()
 
 }
 
-int main()
+int main() //this is called just when the program starts
 {
+    setdiffmedium(); //default option must be set!!!
+    feedrdm; //feeds the random stuff
     mainmenu();
 }
 
+
+
 /*-----------------------------------------------------------------------------
 --
---          Now starts the real fun.
---
---
+--          Now starts the game
 --
 -------------------------------------------------------------------------------*/
 
-int gamestart()
+int gamestart() //Just prints message and redirects to function weather
 {
     clearScreen();
     printf("\n\t Press ENTER to start the game.\n\tEnjoy and have fun!");
@@ -157,30 +211,95 @@ int gamestart()
     getchar();
     weather();
 }
+
+/*-------------------------------------------------
+--
+--  The weather system uses a random variable,
+-- whrrand, which is set each time the function
+-- weather is called, and it sets the time based on
+-- the percentages set with the difficulty chosen
+-- The different values for whr are storm (1), hot (2),
+-- sunny (3), cloudy (4)
+--
+---------------------------------------------------*/
 int weather()
 {
+    int whr; // the active weather variable
+    int whrrand;
+    whrrand = ( rand() % 100 ); // the random weather variable
+    printf("%d",whrrand); //for debugging
+    printf("\n%d %d %d %d\n",storm,hot,sunny,cloudy); //for debugging
+    if ( whrrand <= storm )
+    {
+        whr = 1;
+    }
+    else if ( whrrand <= hot )
+    {
+        whr = 2;
+    }
+    else if ( whrrand <= sunny )
+    {
+        whr = 3;
+    }
+    else if ( whrrand <= cloudy )
+    {
+        whr = 4;
+    }
 
-    srand(time(NULL));
-    int whr = rand();
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
-    printf("");
+    printf("%d",whr); //for debugging
+
+    //printing the weather set
+    printf("\n\n\tThe forecast for today is...");
+    if ( whr == 1 )
+    {
+        printf("\n\n\tBeware! A storm is coming!");
+        printf("\n\tHold your fedora tight!");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+    }
+    else if ( whr == 2 )
+    {
+        printf("\n\n\tToday will be such a hot day, your teeth will");
+        printf("\n\tprobably melt. You should go get a cold drink!");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+    }
+    else if ( whr == 3 )
+    {
+        printf("\n\n\tSeems like sun is shining today. It is neither");
+        printf("\n\ttoo hot nor too cold. Perfect time to play with your kite!");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+
+    }
+    else if ( whr == 4 )
+    {
+        printf("\n\n\tClouds are gathering up high. Maybe it will rain soon?");
+        printf("\nGo get your yellow umbrella. You know, just in case.");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+        printf("");
+    }
+    
+    printf("\n\n\n");
+    getchar();
+    getchar();
+    exit(0); //temporary
+
 }
-
-
-
