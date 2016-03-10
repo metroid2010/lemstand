@@ -10,11 +10,7 @@
 --
 -- DISCLAIMER: not to be distributed comercially.
 -- Only for educational purposes.
--- WARNING: this is still a preview of what is to come.
--- Official releases will be notified when ready.
--- Still, this WIP can be shared freely under the GNU free
--- software licenses. Feel free to modify the code, add new
--- features, and most important of all, enjoy and learn.
+-- Licensed under GNU's GLP
 --
 -- NOTE: Linux version
 --
