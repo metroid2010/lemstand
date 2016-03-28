@@ -23,6 +23,7 @@
 #include <windows.h>
 #include "lemstand.h"
 
+
 void clearScreen();
 void anim(unsigned int i);
 int mainMenu(int diff);
@@ -36,7 +37,7 @@ int main() {
   FILE *fp;
   int whr; //weather
   int diff=2; //variable for difficulty initialized in medium
-  int slct1=0; //main menu selection
+  int slct1; //main menu selection
   int x,y=0; //loops
   int i=1; //days
   int totals=50; //total score
@@ -64,6 +65,7 @@ int main() {
 
     fp=fopen("scores.txt","a");
 
+    printf("\tHello, %s!\n", name);
     do{
       printf("\n\t");
       Sleep(2000);
@@ -87,11 +89,11 @@ int main() {
             case 3:                    //OPTIONS SCREEN
               diff=optionsScreen(diff);
               x=1;
-	            clearScreen();
+              clearScreen();
               break;
-	          default:
+            default:
 	            printf("\tOption not recognised");
-              x=2;
+                x=2;
 	            break;
         }
       }while(x==2);

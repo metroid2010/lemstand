@@ -8,22 +8,23 @@
 #include <time.h>
 #include <unistd.h>
 #include <string.h>
-#include <windows.h>
+#include "resource.h"
 
 
 
 /*   Clear Screen   */
 void clearScreen()
 {
-   system("CLS");
+   system("cls");
 }
 
 /*  Animation  */
 void anim(unsigned int i) {
   char a[]={'-','/','|','\\'};
+  int j;
   printf("\t\t\t\t");
-  for (i=0;i<20;++i) {
-   printf("%c\b",a[i%sizeof(a)]);
+  for (j=0;j<i;++j) {
+   printf("%c\b",a[j%sizeof(a)]);
    fflush(stdout);
    usleep(125000);
   }
@@ -67,7 +68,7 @@ int optionsScreen(int diff)
   printf("Select: ");
   scanf(" %d",&opts1);
 
-  while( opts1 > 4 && opts1 < 1 )
+  while( opts1 > 4 || opts1 < 1 )
   {
     printf("\t");
     Sleep(1000);
@@ -410,7 +411,7 @@ int gameplay(int diff, int whr)
     printf("\n\t");
     Sleep(500);
     printf("The sells for today were...");
-    printf("\n");
+    printf("\n\n");
     anim(10);
 
     //computing sells
