@@ -12,7 +12,7 @@ If I have not forgotten to update this readme (hope I did not), the files availa
 
 ##What will come?
 
-There are plenty of things missing, but it's mainly cosmetic stuff. I was planning to add a cool icon to the app, animate the screens a bit, and I feel adventurous, design some fancy graphics (8-bits looking, of course).
+There are plenty of things missing, but it's mainly cosmetic stuff. I was planning to add a cool icon to the app, animate the screens a bit, and if I feel adventurous, design some fancy graphics (8-bits style, of course).
 
 
 ##Additional notes
